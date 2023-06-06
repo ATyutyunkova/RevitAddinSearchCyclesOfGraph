@@ -1,9 +1,57 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>net7.0</TargetFramework>
+        <TargetFramework>net48</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
-        <Nullable>enable</Nullable>
+        <Nullable>disable</Nullable>
+        <LangVersion>latest</LangVersion>
+        <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+        <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
+        <DefineConstants>STD</DefineConstants>
+        <Deterministic>False</Deterministic>
+        <Platforms>x64</Platforms>
+        <RootNamespace>RevitAddinSearchCyclesOfGraph</RootNamespace>
+        <AssemblyName>RevitAddinSearchCyclesOfGraph</AssemblyName>
     </PropertyGroup>
+
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x64' ">
+      <OutputPath>bin\x64\Debug\</OutputPath>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="RevitApi" Version="2023.0.0" />
+        <Reference Include="Newtonsoft.Json">
+          <HintPath>..\..\..\..\..\..\Program Files\Autodesk\Revit 2023\Newtonsoft.Json.dll</HintPath>
+        </Reference>
+        <Reference Include="StronglyConnectedComponents">
+          <HintPath>..\..\CycleDetection2\StronglyConnectedComponents\bin\Debug\net45\StronglyConnectedComponents.dll</HintPath>
+        </Reference>
+        <Reference Include="System.Windows" />
+        <Reference Include="System.Windows.Forms" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Update="Properties\Resources.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Update="Properties\Resources.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>Resources.resx</DependentUpon>
+      </Compile>
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Update="Resources\pyEnv">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
+        <None Update="Resources\searchCyclesOfGraph.py">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
+    </ItemGroup>
 
 </Project>

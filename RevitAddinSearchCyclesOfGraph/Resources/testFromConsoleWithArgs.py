@@ -29,7 +29,7 @@ with open(path, 'r') as fp:
 writeToLogs(time.perf_counter() - start_read_data, " - чтение файла")
 
 start_deserialization = time.perf_counter()
-graph = ast.literal_eval(data)
+graph = json.loads(data)
 writeToLogs(time.perf_counter() - start_deserialization, " - десериализация из строки в объект")
 
 start_create_graph = time.perf_counter()

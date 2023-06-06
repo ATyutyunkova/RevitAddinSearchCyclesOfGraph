@@ -1,13 +1,30 @@
 ﻿using System.Windows.Forms;
+using Newtonsoft.Json;
 using RevitAddinSearchCyclesOfGraph.Models;
 using RevitAddinSearchCyclesOfGraph.Utils;
 using StronglyConnectedComponents.Core;
 
 namespace RevitAddinSearchCyclesOfGraph.Service;
 
-public static class GraphService
+public static class CGraphService
 {
     private static RevitStatusBar _statusBar = null;
+
+    // 15milliseconds  - 1 миллион вершин
+    public static string CreateGraphDto(int vCount)
+    {
+        var graph = new List<(int, int)>();
+        for (var currentV = 0; currentV < vCount; currentV++)
+        {
+            if (currentV == 0) continue;
+            var lastV = currentV - 1;
+            graph.Add((lastV, currentV));
+            graph.Add((currentV, 0));
+        }
+
+        var serializedGraph = JsonConvert.SerializeObject(graph);
+        return serializedGraph;
+    }
 
     public static void InitSearch()
     {

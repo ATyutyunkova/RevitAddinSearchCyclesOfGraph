@@ -1,15 +1,14 @@
 ﻿using System.Reflection;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
-using ExportToPilotBim.Services;
 
-namespace ExportToPilotBim.Commands
+namespace RevitAddinSearchCyclesOfGraph.Commands
 {
 
     public class InitCommand : IExternalApplication
     {
-        private readonly string _tabName = "ROFL";
-        private readonly string _ribbonPanelName = "Export to Pilot-Bim";
+        private readonly string _tabName = "Search cycles";
+        private readonly string _ribbonPanelName = "Test";
 
         public Result OnStartup(UIControlledApplication application)
         {
@@ -17,7 +16,7 @@ namespace ExportToPilotBim.Commands
             var ribbonPanel = application.CreateRibbonPanel(_tabName, _ribbonPanelName);
             var thisAssemblyPath = Assembly.GetExecutingAssembly().Location;
             var button = new PushButtonData(_ribbonPanelName, _ribbonPanelName, thisAssemblyPath,
-                "ExportToPilotBim.Commands.MainCommand");
+                "RevitAddinSearchCyclesOfGraph.Commands.MainCommand");
             ribbonPanel.AddItem(button);
             return Result.Succeeded;
         }

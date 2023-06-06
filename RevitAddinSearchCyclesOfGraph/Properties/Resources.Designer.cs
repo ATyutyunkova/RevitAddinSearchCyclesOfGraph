@@ -58,5 +58,23 @@ namespace RevitAddinSearchCyclesOfGraph.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Resources\pyEnv.
+        /// </summary>
+        internal static string PyEnv {
+            get {
+                return ResourceManager.GetString("PyEnv", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Resources\searchCyclesOfGraph.py.
+        /// </summary>
+        internal static string PyScript {
+            get {
+                return ResourceManager.GetString("PyScript", resourceCulture);
+            }
+        }
     }
 }
