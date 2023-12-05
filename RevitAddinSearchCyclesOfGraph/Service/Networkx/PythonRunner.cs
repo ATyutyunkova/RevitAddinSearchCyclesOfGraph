@@ -1,13 +1,12 @@
-﻿using System.Text;
+﻿using System.IO;
+using System.Text;
 
-namespace RevitAddinSearchCyclesOfGraph.Service;
+namespace RevitAddinSearchCyclesOfGraph.Service.Networkx;
 
 public static class PythonRunner
 {
     public static string FindCyclesOfGraph(string graphDto)
     {
-        // graphDto = graphDto.Replace($"{'"'}", "'");
-
         var path = WriteGraphToFile(graphDto);
 
         var pythonPath =

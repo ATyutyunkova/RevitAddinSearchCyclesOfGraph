@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics;
+using System.IO;
 
-namespace RevitAddinSearchCyclesOfGraph.Service
+namespace RevitAddinSearchCyclesOfGraph.Service.Networkx
 {
     public sealed class CommandLineProcess : IDisposable
     {

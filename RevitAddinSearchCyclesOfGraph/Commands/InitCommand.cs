@@ -4,7 +4,6 @@ using Autodesk.Revit.UI;
 
 namespace RevitAddinSearchCyclesOfGraph.Commands
 {
-
     public class InitCommand : IExternalApplication
     {
         private readonly string _tabName = "Search cycles";
